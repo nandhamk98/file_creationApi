@@ -1,11 +1,14 @@
 import express from "express";
+import dotenv from "dotenv";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 
+dotenv.config();
+
 const fsPromises = fs.promises;
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT;
 
 const HOME_DIR = os.homedir();
 const CURRENT_DIR = "/Desktop/backupFiles";
