@@ -33,9 +33,14 @@ app.post("/create-file", async function (req, res) {
   let data = {};
   fs.mkdir(PATH, { recursive: true }, (err) => {
     if (err) throw err;
+    console.log("folder created");
   });
   try {
-    data = await fsPromises.writeFile(PATH + "/" + now, now.toString());
+    data = await fsPromises.writeFile(
+      PATH + "/" + now + ".txt",
+      now.toString()
+    );
+    console.log("file created");
   } catch (err) {
     data = err;
   }
