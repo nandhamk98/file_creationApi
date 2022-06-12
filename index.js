@@ -15,7 +15,7 @@ const CURRENT_DIR = "/Desktop/backupFiles";
 const PATH = path.join(HOME_DIR, CURRENT_DIR);
 
 app.get("/", function (req, res) {
-  res.send(PATH);
+  res.send("Welcome to file creation app");
 });
 
 app.get("/files", async function (req, res) {
