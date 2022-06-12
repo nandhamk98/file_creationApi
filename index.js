@@ -14,6 +14,11 @@ const HOME_DIR = os.homedir();
 const CURRENT_DIR = "/Desktop/backupFiles";
 const PATH = path.join(HOME_DIR, CURRENT_DIR);
 
+fs.mkdir(PATH, { recursive: true }, (err) => {
+  if (err) throw err;
+  console.log("folder created");
+});
+
 app.get("/", function (req, res) {
   res.send("Welcome to file creation app");
 });
@@ -31,10 +36,6 @@ app.get("/files", async function (req, res) {
 app.post("/create-file", async function (req, res) {
   let now = Date.now();
   let data = {};
-  fs.mkdir(PATH, { recursive: true }, (err) => {
-    if (err) throw err;
-    console.log("folder created");
-  });
   try {
     data = await fsPromises.writeFile(
       PATH + "/" + now + ".txt",
